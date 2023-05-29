@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="lab4.css">
+    <title>WEB</title>
+    <style>
+        p { 
+         text-align: justify; /* Выравнивание по ширине */
+        }
+       </style>
+    <script>
+
+        /* Добавить строку */
+        function AddRow()
+        {
+            table = document.getElementById("js_table");
+            tr = document.createElement('tr');
+            cols = table.rows[0].cells.length;
+            rows = table.rows.length;
+
+            user_input = prompt("Введите данные(" + cols + " значений)");
+            input_arr = user_input.split (" ");
+
+            for (j=0;j<cols;j++)
+            {
+                td = document.createElement('td');
+                td.textContent = input_arr[j];
+                tr.appendChild(td);
+            }
+            table.appendChild(tr);
+        }
+
+        /* Удалить строку */
+        function DeleteRow()
+        {
+            table = document.getElementById("js_table");
+            user_input = prompt("Введите номер строки");
+            n_input = user_input.split (" ");
+            n = table.rows.length;
+
+            if (n_input <= 0 || n_input > n)
+                alert('Введён некорректный номер строки');
+            else
+                table.deleteRow(n_input-1);
+        }
+
+        /* Галерея */
+        var mas = ["yandex2.jpg","opera2.jpg","mozila.jpg"]
+        // Массив картинок
+        var to = -1;  // Счетчик, указывающий на текущую картинку
+
+        function right_arrow() // Открытие следующей картинки(движение вправо)
+        {
+            setTimeout(right_arrow, 5000);
+            var obj = document.getElementById("img");
+            if (to < mas.length-1)  to++;    else           to = 0;
+            obj.src = mas[to];
+        }
+
+        /* Информация */
+        function fio(){
+            alert("Павлюх Павел Валерьевич");
+        }
+
+        /* Программа 3лр */
+        function lab3(a,b)
+        {
+            let col,row;
+            var table = document.getElementById("js_table");
+            var table1 = document.getElementById("tb2");
+            let sum = 0;
+            let amount = 0;
+
+            //input
+            if (a == -1)
+            {
+                user_input = prompt("Введите кол-во строк и столбцов через пробел.");
+                row_col = user_input.split (" ");
+                row = row_col[0];
+                col = row_col[1];
+            }
+            else
+            {
+                row = a;
+                col = a;
+            }
+
+            //laba 3
+            var arr = [];
+            var arr1 = [];
+            for(var i = 0; i < col; i++)
+            {
+                arr[i] = [];
+                for(var j = 0; j < row; j++)
+                {
+                    arr[i][j] = Math.floor(Math.random() * 10);
+                    sum = sum + arr[i][j];
+                    amount = amount + 1;
+                }
+            }
+
+            let average = sum/amount;
+
+            for (i=0; i < col; i++){
+                let counter = 0;
+                for(j=0; j < row; j++){
+                    if(arr[i][j]>average)
+                        counter=counter+1;
+                }
+                arr1[i] = counter;
+            }
+
+
+            //generate html code
+            for (let i = 0; i < row; i++)
+            {
+                let tr = document.createElement('tr');
+
+                for (let j = 0; j < col; j++)
+                {
+                    let td = document.createElement('td');
+                    td.textContent = arr[i][j];
+                    tr.appendChild(td);
+                }
+                table.appendChild(tr);
+            }
+
+            let tr = document.createElement('tr');
+
+                for (let j = 0; j < col; j++)
+                {
+                    let td = document.createElement('td');
+                    td.textContent = arr1[j];
+                    tr.appendChild(td);
+                }
+                table1.appendChild(tr);
+        }
+
+        /* Смена цвета */
+        var colorWell;
+        var defaultColor = "#000000FF";
+
+        window.addEventListener("load", startup, false);
+        colorPicker.addEventListener("input", updateFirst, false);
+        colorPicker.addEventListener("change", watchColorPicker, false);
+
+        function watchColorPicker(event) {
+            document.querySelectorAll("div").forEach(function(div) {
+                div.style.color = event.target.value;
+            });
+        }
+
+        function updateFirst(event) {
+            var div = document.querySelector("div");
+
+            if (div) {
+                div.style.color = event.target.value;
+            }
+        }
+
+        function startup() {
+            colorWell = document.querySelector("#colorWell");
+            colorWell.value = defaultColor;
+            colorWell.addEventListener("input", updateFirst, false);
+            colorWell.addEventListener("change", updateAll, false);
+            colorWell.select();
+        }
+
+        function updateAll(event) {
+            document.querySelectorAll("div").forEach(function(div) {
+                div.style.color = event.target.value;
+            });
+        }
+
+
+
+
+    </script>
+</head>
+<body>
+
+<header class="header">
+    <nav class="nav">
+        <a class="nav_page" href="index.html">Главная</a>
+        <a class="nav_page1" href="first_page.html">Первое описание</a>
+        <a class="nav_page2" href="second_page.html">Второе описание</a>
+        <a class="nav_page3" href="sources.html">Использованные источники</a>
+        <a class="nav_page" href="lab4.html">ЛР4</a>
+        <a class="nav_page" href="form.html">ЛР5</a>
+        <a class="nav_page" href="6lab.php">ЛР6</a>
+        <a class="nav_page" href="7lab.html">ЛР7</a>
+        <a class="nav_page" href="8lab.html">ЛР8</a>
+        <ul class="menu">
+            <li><a href="">Соцсети</a>
+            <ul>
+              <li><a href="#">Telegram</a>
+              <li><a href="#">VK</a>
+              <li><a href="#">Instagram</a>
+            </ul>
+            </li>
+          </ul>
+     </nav>
+</header>
+
+<main>
+    <img src="yandex2.jpg" onmouseover="right_arrow()"  width = "500" height="300" id="img" style="margin: 80px 20%;">
+    <p>
+        <div>
+            <h1>Задание 6</h1>
+        </div>
+        <div>
+            <h2>Исходный массив </h2>
+            <table id="js_table" class="js_table">
+            </table>
+            <h2>Результат </h2>
+            <table id="tb2" class="js_table">
+            </table>
+        </div>
+        
+        <div>
+        <br><h2>Задания</h2>
+        <label for="colorWell">Изменить цвет текста:</label>
+            <input type="color" value="#000000" id="colorWell"><br>
+            <button onclick ="lab3(6)">Автоматический ввод</button><br>
+            <button onclick ="lab3(-1)">Ручной ввод</button><br>
+            <button onclick = "AddRow()">Добавить строку</button><br>
+            <button onclick = "DeleteRow()">Удалить строку</button><br>
+            <button onclick = "fio()">Информация</button><br>
+        </div>
+        </p>
+</main>
+
+
+<footer class="footer">
+    <div class="footer_text">Все права не защищены
+    </div>  
+</footer>
+
+</body>
+</html>

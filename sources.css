@@ -1,0 +1,144 @@
+.page {
+    background-image: url(gif.gif);
+    background-repeat: no-repeat ;
+    background-size: 100%;
+    background-color: black;
+}
+
+a { /*Селектор тега*/
+    text-decoration: none;
+    -webkit-transition: all 1s ease;
+          transition: all 1s ease;
+}
+a:hover {
+    color: #c70000;
+}
+
+.nav {
+    border: 3px white solid;
+    background: black;
+    border-radius: 7px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    word-spacing: 48px;
+    font-family: Trebuchet MS, sans-serif;
+    text-transform: uppercase;
+}
+
+.nav_page {
+    color: white;
+    font-size: 30px;
+}
+
+.nav_page1, .nav_page2, .nav_page3 {
+    color: white;
+    word-spacing: 5px;
+    font-size: 30px;
+}
+
+
+.intro { 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    height: 100vh;
+    color: white;
+}
+
+.intro_in {
+    border: 3px white solid;
+    background: black;
+    border-radius: 7px;
+    width: 100%;
+    max-width: 700px;
+    margin: 0 auto;
+    color: white;
+}
+
+.intro_title {
+    font-family: Trebuchet MS, sans-serif;
+    font-size: 55px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    line-height: 1;
+    color: white;
+}
+
+.source_text {
+    font-family: Trebuchet MS, sans-serif;
+    text-decoration: none;
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.source_site { /*Селектор по классу */
+    text-decoration: none;
+    color: white;
+
+}
+
+
+#footer { /* Селектор по идентификатору */
+    border: 3px white solid;
+    background: black;
+    border-radius: 7px;
+    height: 55px;
+    line-height: 55px;
+    text-align: center;
+    font-family: Trebuchet MS, sans-serif;
+    text-transform: uppercase; 
+}
+
+.footer_text {
+    color: white;
+    font-size: 15px;
+}
+
+/*Раскрывающийся список */
+.menu{
+    display: flex;
+    
+  }
+  
+  .menu li{
+    width: 200px;
+    list-style: none;
+    background: #000000;
+    position: relative;
+    border: solid white;
+    border-radius: 7px;
+  }
+  
+  .menu a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    height: 40px;
+    line-height: 40px;
+    transition: all .5s;
+    text-decoration: none;
+    -webkit-transition: all 1s ease;
+    transition: all 1s ease;
+  }
+
+  .menu a:hover {
+    color: #c70000;
+  }
+  
+  .menu ul {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    display: none;
+    padding: 0;
+  }
+  
+  .menu li:hover > ul {
+    display: block;
+  }
+  
